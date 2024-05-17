@@ -1,0 +1,277 @@
+Family: Beta regression(2.145) 
+Link function: logit 
+
+Formula:
+foraging ~ 0 + is.other + is.juniper + is.conifer + is.aspen + 
+    foraging_prior + snd + is.other:cover.tree + is.juniper:cover.tree + 
+    is.conifer:cover.tree + is.aspen:cover.tree + cover.herbaceous_NDVI.norm.curr + 
+    cover.herbaceous_NDVI.delta + cover.shrub_NDVI.norm.curr + 
+    cover.shrub_NDVI.delta + is.aspen:cover.tree_NDVI.norm.curr + 
+    is.aspen:cover.tree_NDVI.delta + s(log_dawn, log_dusk) + 
+    s(julian.day, bs = "cc", k = 13) + s(animalid, bs = "re") + 
+    s(Evnt_ID, bs = "re")
+
+Parametric coefficients:
+                                    Estimate Std. Error z value Pr(>|z|)    
+is.other                           -1.735440   0.025765 -67.355  < 2e-16 ***
+is.juniper                         -1.679992   0.025764 -65.206  < 2e-16 ***
+is.conifer                         -1.640043   0.026235 -62.513  < 2e-16 ***
+is.aspen                           -1.590077   0.026670 -59.621  < 2e-16 ***
+foraging_prior                      2.327675   0.004399 529.141  < 2e-16 ***
+snd                                 0.253548   0.012131  20.902  < 2e-16 ***
+cover.herbaceous_NDVI.norm.curr    -0.401282   0.038570 -10.404  < 2e-16 ***
+cover.herbaceous_NDVI.delta         0.797249   0.050375  15.826  < 2e-16 ***
+cover.shrub_NDVI.norm.curr          0.598434   0.042963  13.929  < 2e-16 ***
+cover.shrub_NDVI.delta              0.048870   0.059431   0.822 0.410909    
+is.other:cover.tree                 0.548215   0.025442  21.548  < 2e-16 ***
+is.juniper:cover.tree               0.401895   0.018124  22.174  < 2e-16 ***
+is.conifer:cover.tree               0.405185   0.019398  20.888  < 2e-16 ***
+is.aspen:cover.tree                 1.264885   0.176436   7.169 7.55e-13 ***
+is.aspen:cover.tree_NDVI.norm.curr  0.253386   0.067608   3.748 0.000178 ***
+is.aspen:cover.tree_NDVI.delta     -2.233261   0.435651  -5.126 2.96e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                        edf Ref.df Chi.sq p-value    
+s(log_dawn,log_dusk)  28.84     29  51990  <2e-16 ***
+s(julian.day)         10.79     11  32922  <2e-16 ***
+s(animalid)          314.15    443 383932  <2e-16 ***
+s(Evnt_ID)           136.68    168 256918  <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =   0.41   Deviance explained = 46.6%
+-REML = -2.4725e+05  Scale est. = 1         n = 717339
+
+
+Family: Beta regression(2.142) 
+Link function: logit 
+
+Formula:
+foraging ~ 0 + unburned.out:is.other + unburned.out:is.juniper + 
+    unburned.out:is.conifer + unburned.out:is.aspen + unburned.in:is.other + 
+    unburned.in:is.juniper + unburned.in:is.conifer + unburned.in:is.aspen + 
+    burned.1:is.other + burned.1:is.juniper + burned.1:is.conifer + 
+    burned.1:is.aspen + burned.2:is.other + burned.2:is.juniper + 
+    burned.2:is.conifer + burned.2:is.aspen + burned.3:is.other + 
+    burned.3:is.juniper + burned.3:is.conifer + burned.3:is.aspen + 
+    foraging_prior + snd + unburned.in:is.other:daydiff.log + 
+    unburned.in:is.juniper:daydiff.log + unburned.in:is.conifer:daydiff.log + 
+    unburned.in:is.aspen:daydiff.log + burned.1:is.other:daydiff.log + 
+    burned.1:is.juniper:daydiff.log + burned.1:is.conifer:daydiff.log + 
+    burned.1:is.aspen:daydiff.log + burned.2:is.other:daydiff.log + 
+    burned.2:is.juniper:daydiff.log + burned.2:is.conifer:daydiff.log + 
+    burned.2:is.aspen:daydiff.log + burned.3:is.other:daydiff.log + 
+    burned.3:is.juniper:daydiff.log + burned.3:is.conifer:daydiff.log + 
+    burned.3:is.aspen:daydiff.log + unburned.in:is.other:I(daydiff.log^2) + 
+    unburned.in:is.juniper:I(daydiff.log^2) + unburned.in:is.conifer:I(daydiff.log^2) + 
+    unburned.in:is.aspen:I(daydiff.log^2) + burned.1:is.other:I(daydiff.log^2) + 
+    burned.1:is.juniper:I(daydiff.log^2) + burned.1:is.conifer:I(daydiff.log^2) + 
+    burned.1:is.aspen:I(daydiff.log^2) + burned.2:is.other:I(daydiff.log^2) + 
+    burned.2:is.juniper:I(daydiff.log^2) + burned.2:is.conifer:I(daydiff.log^2) + 
+    burned.2:is.aspen:I(daydiff.log^2) + burned.3:is.other:I(daydiff.log^2) + 
+    burned.3:is.juniper:I(daydiff.log^2) + burned.3:is.conifer:I(daydiff.log^2) + 
+    burned.3:is.aspen:I(daydiff.log^2) + s(log_dawn, log_dusk) + 
+    s(julian.day, bs = "cc", k = 13) + s(animalid, bs = "re") + 
+    s(Evnt_ID, bs = "re")
+
+Parametric coefficients:
+                                         Estimate Std. Error t value Pr(>|t|)    
+foraging_prior                           2.330126   0.004383 531.615  < 2e-16 ***
+snd                                      0.250588   0.011659  21.492  < 2e-16 ***
+unburned.out:is.other                   -1.577828   0.026263 -60.079  < 2e-16 ***
+unburned.out:is.juniper                 -1.531068   0.026336 -58.135  < 2e-16 ***
+unburned.out:is.conifer                 -1.453530   0.026777 -54.284  < 2e-16 ***
+unburned.out:is.aspen                   -1.343133   0.026915 -49.902  < 2e-16 ***
+is.other:unburned.in                    -2.897611   0.281287 -10.301  < 2e-16 ***
+is.juniper:unburned.in                  -0.736338   0.243606  -3.023 0.002506 ** 
+is.conifer:unburned.in                  -3.353267   0.699919  -4.791 1.66e-06 ***
+is.aspen:unburned.in                    -1.232555   0.590715  -2.087 0.036930 *  
+is.other:burned.1                       -2.663418   0.195956 -13.592  < 2e-16 ***
+is.juniper:burned.1                     -2.179834   0.190805 -11.424  < 2e-16 ***
+is.conifer:burned.1                     -4.012780   0.425376  -9.433  < 2e-16 ***
+is.aspen:burned.1                       -2.392053   0.401142  -5.963 2.48e-09 ***
+is.other:burned.2                       -4.115474   0.260346 -15.808  < 2e-16 ***
+is.juniper:burned.2                     -4.347492   0.244806 -17.759  < 2e-16 ***
+is.conifer:burned.2                     -4.356791   0.439768  -9.907  < 2e-16 ***
+is.aspen:burned.2                       -2.251598   0.438494  -5.135 2.82e-07 ***
+is.other:burned.3                       -3.442367   0.451822  -7.619 2.56e-14 ***
+is.juniper:burned.3                     -2.101048   0.465166  -4.517 6.28e-06 ***
+is.conifer:burned.3                     -2.963524   0.521388  -5.684 1.32e-08 ***
+is.aspen:burned.3                       -3.342887   0.585963  -5.705 1.16e-08 ***
+is.other:unburned.in:daydiff.log         0.375051   0.080656   4.650 3.32e-06 ***
+is.juniper:unburned.in:daydiff.log      -0.236290   0.071093  -3.324 0.000888 ***
+is.conifer:unburned.in:daydiff.log       0.543294   0.189649   2.865 0.004174 ** 
+is.aspen:unburned.in:daydiff.log        -0.051339   0.158218  -0.324 0.745570    
+is.other:burned.1:daydiff.log            0.321703   0.055737   5.772 7.85e-09 ***
+is.juniper:burned.1:daydiff.log          0.167836   0.053803   3.119 0.001812 ** 
+is.conifer:burned.1:daydiff.log          0.745299   0.116921   6.374 1.84e-10 ***
+is.aspen:burned.1:daydiff.log            0.262133   0.108479   2.416 0.015674 *  
+is.other:burned.2:daydiff.log            0.741503   0.072148  10.278  < 2e-16 ***
+is.juniper:burned.2:daydiff.log          0.743219   0.066058  11.251  < 2e-16 ***
+is.conifer:burned.2:daydiff.log          0.819357   0.120286   6.812 9.65e-12 ***
+is.aspen:burned.2:daydiff.log            0.220474   0.118671   1.858 0.063191 .  
+is.other:burned.3:daydiff.log            0.586610   0.124661   4.706 2.53e-06 ***
+is.juniper:burned.3:daydiff.log          0.184598   0.116877   1.579 0.114240    
+is.conifer:burned.3:daydiff.log          0.442936   0.141686   3.126 0.001771 ** 
+is.aspen:burned.3:daydiff.log            0.509099   0.160501   3.172 0.001514 ** 
+is.other:unburned.in:I(daydiff.log^2)   -0.025761   0.005582  -4.615 3.92e-06 ***
+is.juniper:unburned.in:I(daydiff.log^2)  0.017469   0.004960   3.522 0.000428 ***
+is.conifer:unburned.in:I(daydiff.log^2) -0.037470   0.012571  -2.981 0.002876 ** 
+is.aspen:unburned.in:I(daydiff.log^2)    0.004156   0.010471   0.397 0.691464    
+is.other:burned.1:I(daydiff.log^2)      -0.022614   0.003851  -5.873 4.29e-09 ***
+is.juniper:burned.1:I(daydiff.log^2)    -0.010425   0.003708  -2.812 0.004928 ** 
+is.conifer:burned.1:I(daydiff.log^2)    -0.052293   0.007866  -6.648 2.97e-11 ***
+is.aspen:burned.1:I(daydiff.log^2)      -0.016608   0.007252  -2.290 0.022025 *  
+is.other:burned.2:I(daydiff.log^2)      -0.051434   0.004870 -10.562  < 2e-16 ***
+is.juniper:burned.2:I(daydiff.log^2)    -0.048141   0.004391 -10.964  < 2e-16 ***
+is.conifer:burned.2:I(daydiff.log^2)    -0.056084   0.008053  -6.965 3.30e-12 ***
+is.aspen:burned.2:I(daydiff.log^2)      -0.013551   0.007881  -1.719 0.085549 .  
+is.other:burned.3:I(daydiff.log^2)      -0.041883   0.008349  -5.017 5.26e-07 ***
+is.juniper:burned.3:I(daydiff.log^2)    -0.013488   0.007336  -1.839 0.065987 .  
+is.conifer:burned.3:I(daydiff.log^2)    -0.030674   0.009416  -3.258 0.001124 ** 
+is.aspen:burned.3:I(daydiff.log^2)      -0.031027   0.010693  -2.902 0.003714 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                        edf Ref.df      F p-value    
+s(log_dawn,log_dusk)  28.84     29 1840.7  <2e-16 ***
+s(julian.day)         10.80     11 2460.4  <2e-16 ***
+s(animalid)          315.52    443  291.9  <2e-16 ***
+s(Evnt_ID)           138.72    168 1175.7  <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.409   Deviance explained = 46.5%
+-REML = 1.1617e+06  Scale est. = 1         n = 721368
+
+Family: Beta regression(2.147) 
+Link function: logit 
+
+Formula:
+foraging ~ 0 + unburned.out:is.other + unburned.out:is.juniper + 
+    unburned.out:is.conifer + unburned.out:is.aspen + unburned.in:is.other + 
+    unburned.in:is.juniper + unburned.in:is.conifer + unburned.in:is.aspen + 
+    burned.1:is.other + burned.1:is.juniper + burned.1:is.conifer + 
+    burned.1:is.aspen + burned.2:is.other + burned.2:is.juniper + 
+    burned.2:is.conifer + burned.2:is.aspen + burned.3:is.other + 
+    burned.3:is.juniper + burned.3:is.conifer + burned.3:is.aspen + 
+    foraging_prior + snd + is.other:cover.tree + is.juniper:cover.tree + 
+    is.conifer:cover.tree + is.aspen:cover.tree + cover.herbaceous_NDVI.norm.curr + 
+    cover.herbaceous_NDVI.delta + cover.shrub_NDVI.norm.curr + 
+    cover.shrub_NDVI.delta + is.aspen:cover.tree_NDVI.norm.curr + 
+    is.aspen:cover.tree_NDVI.delta + unburned.in:is.other:daydiff.log + 
+    unburned.in:is.juniper:daydiff.log + unburned.in:is.conifer:daydiff.log + 
+    unburned.in:is.aspen:daydiff.log + burned.1:is.other:daydiff.log + 
+    burned.1:is.juniper:daydiff.log + burned.1:is.conifer:daydiff.log + 
+    burned.1:is.aspen:daydiff.log + burned.2:is.other:daydiff.log + 
+    burned.2:is.juniper:daydiff.log + burned.2:is.conifer:daydiff.log + 
+    burned.2:is.aspen:daydiff.log + burned.3:is.other:daydiff.log + 
+    burned.3:is.juniper:daydiff.log + burned.3:is.conifer:daydiff.log + 
+    burned.3:is.aspen:daydiff.log + unburned.in:is.other:I(daydiff.log^2) + 
+    unburned.in:is.juniper:I(daydiff.log^2) + unburned.in:is.conifer:I(daydiff.log^2) + 
+    unburned.in:is.aspen:I(daydiff.log^2) + burned.1:is.other:I(daydiff.log^2) + 
+    burned.1:is.juniper:I(daydiff.log^2) + burned.1:is.conifer:I(daydiff.log^2) + 
+    burned.1:is.aspen:I(daydiff.log^2) + burned.2:is.other:I(daydiff.log^2) + 
+    burned.2:is.juniper:I(daydiff.log^2) + burned.2:is.conifer:I(daydiff.log^2) + 
+    burned.2:is.aspen:I(daydiff.log^2) + burned.3:is.other:I(daydiff.log^2) + 
+    burned.3:is.juniper:I(daydiff.log^2) + burned.3:is.conifer:I(daydiff.log^2) + 
+    burned.3:is.aspen:I(daydiff.log^2) + s(log_dawn, log_dusk) + 
+    s(julian.day, bs = "cc", k = 13) + s(animalid, bs = "re") + 
+    s(Evnt_ID, bs = "re")
+
+Parametric coefficients:
+                                         Estimate Std. Error z value Pr(>|z|)    
+foraging_prior                           2.323038   0.004402 527.693  < 2e-16 ***
+snd                                      0.279256   0.012432  22.462  < 2e-16 ***
+cover.herbaceous_NDVI.norm.curr         -0.372971   0.038834  -9.604  < 2e-16 ***
+cover.herbaceous_NDVI.delta              0.830480   0.050944  16.302  < 2e-16 ***
+cover.shrub_NDVI.norm.curr               0.618349   0.043295  14.282  < 2e-16 ***
+cover.shrub_NDVI.delta                   0.137232   0.060071   2.285 0.022341 *  
+unburned.out:is.other                   -1.770635   0.025785 -68.670  < 2e-16 ***
+unburned.out:is.juniper                 -1.732345   0.025983 -66.671  < 2e-16 ***
+unburned.out:is.conifer                 -1.689146   0.026823 -62.975  < 2e-16 ***
+unburned.out:is.aspen                   -1.603010   0.027006 -59.358  < 2e-16 ***
+is.other:unburned.in                    -2.847509   0.282340 -10.085  < 2e-16 ***
+is.juniper:unburned.in                  -0.896354   0.243625  -3.679 0.000234 ***
+is.conifer:unburned.in                  -3.329459   0.703122  -4.735 2.19e-06 ***
+is.aspen:unburned.in                    -1.171837   0.592377  -1.978 0.047907 *  
+is.other:burned.1                       -2.698015   0.197591 -13.655  < 2e-16 ***
+is.juniper:burned.1                     -2.422198   0.191321 -12.660  < 2e-16 ***
+is.conifer:burned.1                     -4.113517   0.427184  -9.629  < 2e-16 ***
+is.aspen:burned.1                       -2.312170   0.405949  -5.696 1.23e-08 ***
+is.other:burned.2                       -4.442948   0.263148 -16.884  < 2e-16 ***
+is.juniper:burned.2                     -4.425586   0.244946 -18.068  < 2e-16 ***
+is.conifer:burned.2                     -4.708744   0.440259 -10.695  < 2e-16 ***
+is.aspen:burned.2                       -2.481549   0.443009  -5.602 2.12e-08 ***
+is.other:burned.3                       -3.740719   0.454198  -8.236  < 2e-16 ***
+is.juniper:burned.3                     -2.213254   0.465126  -4.758 1.95e-06 ***
+is.conifer:burned.3                     -3.545884   0.522796  -6.783 1.18e-11 ***
+is.aspen:burned.3                       -3.697668   0.588951  -6.278 3.42e-10 ***
+is.other:cover.tree                      0.608635   0.025884  23.514  < 2e-16 ***
+is.juniper:cover.tree                    0.487918   0.020828  23.426  < 2e-16 ***
+is.conifer:cover.tree                    0.496425   0.021086  23.543  < 2e-16 ***
+is.aspen:cover.tree                      1.321607   0.176561   7.485 7.14e-14 ***
+is.aspen:cover.tree_NDVI.norm.curr       0.357430   0.069811   5.120 3.06e-07 ***
+is.aspen:cover.tree_NDVI.delta          -2.435287   0.436919  -5.574 2.49e-08 ***
+is.other:unburned.in:daydiff.log         0.308228   0.081064   3.802 0.000143 ***
+is.juniper:unburned.in:daydiff.log      -0.234914   0.071157  -3.301 0.000962 ***
+is.conifer:unburned.in:daydiff.log       0.478262   0.190560   2.510 0.012081 *  
+is.aspen:unburned.in:daydiff.log        -0.132306   0.158825  -0.833 0.404829    
+is.other:burned.1:daydiff.log            0.286544   0.056291   5.090 3.57e-07 ***
+is.juniper:burned.1:daydiff.log          0.201638   0.053993   3.735 0.000188 ***
+is.conifer:burned.1:daydiff.log          0.719148   0.117510   6.120 9.36e-10 ***
+is.aspen:burned.1:daydiff.log            0.194994   0.109840   1.775 0.075854 .  
+is.other:burned.2:daydiff.log            0.797435   0.072948  10.932  < 2e-16 ***
+is.juniper:burned.2:daydiff.log          0.736895   0.066176  11.135  < 2e-16 ***
+is.conifer:burned.2:daydiff.log          0.884053   0.120428   7.341 2.12e-13 ***
+is.aspen:burned.2:daydiff.log            0.272315   0.119978   2.270 0.023226 *  
+is.other:burned.3:daydiff.log            0.640073   0.125385   5.105 3.31e-07 ***
+is.juniper:burned.3:daydiff.log          0.179443   0.116871   1.535 0.124688    
+is.conifer:burned.3:daydiff.log          0.591526   0.142038   4.165 3.12e-05 ***
+is.aspen:burned.3:daydiff.log            0.612257   0.161465   3.792 0.000150 ***
+is.other:unburned.in:I(daydiff.log^2)   -0.021200   0.005612  -3.778 0.000158 ***
+is.juniper:unburned.in:I(daydiff.log^2)  0.016927   0.004966   3.409 0.000652 ***
+is.conifer:unburned.in:I(daydiff.log^2) -0.033448   0.012631  -2.648 0.008097 ** 
+is.aspen:unburned.in:I(daydiff.log^2)    0.009192   0.010517   0.874 0.382086    
+is.other:burned.1:I(daydiff.log^2)      -0.020473   0.003891  -5.262 1.43e-07 ***
+is.juniper:burned.1:I(daydiff.log^2)    -0.013295   0.003722  -3.572 0.000354 ***
+is.conifer:burned.1:I(daydiff.log^2)    -0.050730   0.007908  -6.415 1.40e-10 ***
+is.aspen:burned.1:I(daydiff.log^2)      -0.013337   0.007342  -1.817 0.069283 .  
+is.other:burned.2:I(daydiff.log^2)      -0.055755   0.004924 -11.322  < 2e-16 ***
+is.juniper:burned.2:I(daydiff.log^2)    -0.048456   0.004398 -11.018  < 2e-16 ***
+is.conifer:burned.2:I(daydiff.log^2)    -0.061400   0.008063  -7.615 2.64e-14 ***
+is.aspen:burned.2:I(daydiff.log^2)      -0.019711   0.007973  -2.472 0.013425 *  
+is.other:burned.3:I(daydiff.log^2)      -0.046328   0.008401  -5.514 3.50e-08 ***
+is.juniper:burned.3:I(daydiff.log^2)    -0.013518   0.007336  -1.843 0.065377 .  
+is.conifer:burned.3:I(daydiff.log^2)    -0.042477   0.009438  -4.501 6.78e-06 ***
+is.aspen:burned.3:I(daydiff.log^2)      -0.041446   0.010771  -3.848 0.000119 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                        edf Ref.df Chi.sq p-value    
+s(log_dawn,log_dusk)  28.84     29  51931  <2e-16 ***
+s(julian.day)         10.80     11  19162  <2e-16 ***
+s(animalid)          313.43    443  89997  <2e-16 ***
+s(Evnt_ID)           136.41    168 156890  <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.411   Deviance explained = 46.7%
+-REML = -2.4754e+05  Scale est. = 1         n = 717339
+
+
+
+
+
+AICc(gam.combo)
+[1] -496679.1
+
+AICc(gam_bam_fire)
+[1] -496336.4
+
+AICc(gam_null)
+[1] -495820.6
