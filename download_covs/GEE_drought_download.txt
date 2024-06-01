@@ -1,0 +1,142 @@
+// Pull & download PDSI and Palmer Z-Index rasters for Utah + buffer
+// For February & July from 2012-2021 & April & November from 2018-2021
+
+// Once you have all the tasks loaded in the Tasks tab, press F12. 
+//    This opens a console panel on the browser page.
+// Copy and paste this script into the console at the bottom right of the browser: 
+
+// function runTaskList(){
+//     // var tasklist = document.getElementsByClassName('task local type-EXPORT_IMAGE awaiting-user-config');
+//     // for (var i = 0; i < tasklist.length; i++)
+//     //         tasklist[i].getElementsByClassName('run-button')[0].click();
+//     $$('.run-button' ,$$('ee-task-pane')[0].shadowRoot).forEach(function(e) {
+//         e.click();
+//     })
+// }
+
+// function confirmAll() {
+//     // var ok = document.getElementsByClassName('goog-buttonset-default goog-buttonset-action');
+//     // for (var i = 0; i < ok.length; i++)
+//     //     ok[i].click();
+//     $$('ee-table-config-dialog, ee-image-config-dialog').forEach(function(e) {
+//         var eeDialog = $$('ee-dialog', e.shadowRoot)[0]
+//         var paperDialog = $$('paper-dialog', eeDialog.shadowRoot)[0]
+//         $$('.ok-button', paperDialog)[0].click()
+//     })
+// }
+
+// runTaskList();
+
+// WAIT for the Run Panel to pop up
+// Then enter a this line in the console: confirmAll();
+
+// ---------------------------
+// study area 
+// ---------------------------
+// study area = the extent of utah + 1km buffer
+var ext = ee.Geometry.BBox(-115.5366, 36.0239, -107.6387, 42.89522);
+print(ext);
+
+// make a feature of the extent, call it stdyar
+var stdyar = ee.Feature(ext)
+print(stdyar);
+
+// check
+Map.addLayer(stdyar);
+
+//-------------
+// load drought & clip to study area
+//-------------
+
+// Add the Gridmet data collection which contains the PDSI
+var collection = ee.ImageCollection('GRIDMET/DROUGHT')
+  .map(function(image){return image.clip(stdyar)});
+  
+//Print the collection in the console
+print(collection);
+
+//-------------
+// Function to Batch Download
+//-------------
+// Use this premade function from following user to download the entire collection
+var batch = require('users/fitoprincipe/geetools:batch');
+
+// ---------------------------
+// study period 
+// ---------------------------
+// loop to set the dates for the study period
+// 2012-2021 -- need all months from 2012-2021 except for those already ran
+// February (02/01-28) and July (07/01-31)
+// April (04/01-30) and November (11/01-30)
+
+for (var year = 2012; year < 2022; year++) {
+  print(year);
+  
+  // Filter collection by date (just do one month at a time)
+  // January
+    var dS = year + '-01-01';
+    var dE = year + '-01-31';
+/*  // February
+    var dS = year + '-02-01';
+    var dE = year + '-02-28';
+  // March
+    var dS = year + '-03-01';
+    var dE = year + '-03-31';*/
+/*  // April
+    var dS = year + '-04-01';
+    var dE = year + '-04-30';
+  // May
+    var dS = year + '-05-01';
+    var dE = year + '-05-31';
+  // June
+    var dS = year + '-06-01';
+    var dE = year + '-06-30';
+  // July
+    var dS = year + '-07-01';
+    var dE = year + '-07-31';
+  // August
+    var dS = year + '-08-01';
+    var dE = year + '-08-31';  
+  // September
+    var dS = year + '-09-01';
+    var dE = year + '-09-30';
+  // October
+    var dS = year + '-10-01';
+    var dE = year + '-10-31';
+  // November
+    var dS = year + '-11-01';
+    var dE = year + '-11-30';
+  // December   
+    var dS = year + '-12-01';
+    var dE = year + '-12-31';*/
+    
+  // convert to UTC  
+  var dSUTC = ee.Date(dS, 'GMT');
+  var dEUTC = ee.Date(dE, 'GMT');
+  
+  // filter rasters to the specified dates
+  var filtered = collection.filterDate(dSUTC, dEUTC.advance(1, 'day'));
+  print(collection.aggregate_array('system:index'));
+  print(filtered);
+  
+  // Select variables pdsi and z
+  var PDSI = filtered.select('pdsi');
+  var Z = filtered.select('z');
+  
+  // Batch download
+    PDSI
+    batch.Download.ImageCollection.toDrive(PDSI, "drought_PDSI",
+    {
+      scale: 30,
+      region: stdyar 
+    });
+  
+    // Z Index
+    batch.Download.ImageCollection.toDrive(Z, "drought_Zindex",
+    {
+      scale: 30,
+      region: stdyar 
+    });
+  
+  print("------");
+}
