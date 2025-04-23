@@ -20,7 +20,7 @@ Archived versions of this repository are available through Zenodo. The latest ve
 
 **Repository version 0.1**  
 This release was created prior to peer-review.  
-*Repository version 0.1.1* was created to assign Zenodo DOI.
+*Repository version 0.1.1* was created to assign Zenodo DOI.  
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15271498.svg)](https://doi.org/10.5281/zenodo.15271498)
 
 ### Scripts  
