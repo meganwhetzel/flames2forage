@@ -3,4 +3,6 @@
 .RData
 .Ruserdata
 data/
+out/
 .DS_Store
+Elk_Cleaning_Code/
